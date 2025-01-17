@@ -1,41 +1,8 @@
-﻿  player.cpp
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): error C2398: Élément « 2 » : la conversion de « int » en « T » nécessite une conversion restrictive
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): error C2398:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): error C2398:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): error C2398:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): error C2398:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): warning C4244:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): warning C4244:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): warning C4244:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,29): warning C4244:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): error C2398: Élément « 1 » : la conversion de « int » en « T » nécessite une conversion restrictive
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): error C2398:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): error C2398:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): error C2398:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): error C2398:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): warning C4244:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): warning C4244:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): warning C4244:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(4,24): warning C4244:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): error C2398: Élément « 2 » : la conversion de « int » en « T » nécessite une conversion restrictive
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): error C2398:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): error C2398:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): error C2398:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): error C2398:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): warning C4244:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): warning C4244:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): warning C4244:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,22): warning C4244:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): error C2398: Élément « 1 » : la conversion de « int » en « T » nécessite une conversion restrictive
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): error C2398:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): error C2398:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): error C2398:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): error C2398:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): warning C4244:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): warning C4244:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): warning C4244:             T=float
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\player.cpp(5,20): warning C4244:         ]
+﻿  chaser.cpp
+  enemy.cpp
+  game.cpp
+  main.cpp
+  patrolling.cpp
+  player.cpp
+  Génération de code en cours...
+  Projet Encap.vcxproj -> C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\x64\Debug\Projet Encap.exe

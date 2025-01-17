@@ -1,18 +1,20 @@
 #pragma once
 
-#include <iostream>
-#include "SFML/System.hpp"
-#include "SFML/Audio.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
+#include "includes.h"
+#include "player.h"
 
 
 class Game {
 public:
 	sf::RenderWindow window;
-	sf::RectangleShape player;
+	Player player;
+	sf::Clock Clock;
+	float deltaTime = 0;
 
 	Game();
 
 	void gameLoop();
+	void pollEvent();
+	void drawAll();
+	void run();
 };

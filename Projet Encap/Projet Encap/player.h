@@ -5,12 +5,12 @@
 class Player : public Entity {
 public:
 	sf::RectangleShape rect;
-	sf::Vector2f position;
-	float speed;
+	float speed = 500;
 
-	Player(int x, int y, int posX, int posY);
+
+	Player(float x, float y, float posX, float posY);
 	void update(float deltaTime) override;
 	void draw(sf::RenderWindow& window) override;
 
-	void handleInput();
+	void handleInput(float deltaTime, sf::RenderWindow& window);
 };
