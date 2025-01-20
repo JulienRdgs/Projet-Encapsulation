@@ -4,10 +4,14 @@
 
 class Enemy : public Entity {
 public:
-	sf::RectangleShape rect;
-	float speed = 400;
+	std::vector<std::unique_ptr<Enemy>> enemies;
 
-	Enemy(float x, float y, float posX, float posY);
+	Enemy();
+	~Enemy();
+	
 	void update(float deltaTime) override;
 	void draw(sf::RenderWindow& window) override;
+
+	void createEnemy(std::string type,float xPos, float yPos);
+	void destroyEnemy(std::unique_ptr<Enemy>& enemy);
 };
