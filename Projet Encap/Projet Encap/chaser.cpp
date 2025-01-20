@@ -1,7 +1,7 @@
 #include "chaser.h"
 
 ChaserEnemy::ChaserEnemy(float xPos, float yPos) {
-	sprite.setScale(0.05, 0.05);
+	sprite.setScale(0.1, 0.1);
 	sprite.setPosition({ xPos, yPos });
 	posX = xPos;
 	posY = yPos;

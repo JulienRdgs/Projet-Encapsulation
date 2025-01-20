@@ -4,13 +4,14 @@
 #include "player.h"
 #include "chaser.h"
 #include "patrolling.h"
+#include "enemyManager.h"
 
 
 class Game {
 public:
 	sf::RenderWindow window;
 	Player player;
-	Enemy enemyManager;
+	EnemyManager enemyManager;
 	ChaserEnemy chaser;
 	PatrollingEnemy patrolling;
 	sf::Clock Clock;

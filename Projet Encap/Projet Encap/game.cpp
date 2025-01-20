@@ -6,15 +6,10 @@ chaser(100, 100), patrolling(700, 700) {
 
 void Game::gameLoop() {
     while (window.isOpen()) {
-        while (playing) {
-            deltaTime = Clock.restart().asSeconds();
-            updateEntities();
-            pollEvent();
-            drawAll();
-        }
-        window.clear(sf::Color::Red);
-        window.display();
-
+        deltaTime = Clock.restart().asSeconds();
+        updateEntities();
+        pollEvent();
+        drawAll();
     }
 }
 
@@ -38,7 +33,7 @@ void Game::updateEntities() {
     //collisions temporaires
     if (player.sprite.getGlobalBounds().intersects(chaser.sprite.getGlobalBounds()) 
         || player.sprite.getGlobalBounds().intersects(patrolling.sprite.getGlobalBounds())) {
-        playing = false;
+        std::cout << "game over tempo" << std::endl;
     }
 }
 
@@ -55,9 +50,9 @@ void Game::drawAll() {
 }
 
 void Game::loadTextures() {
-    playerTexture.loadFromFile("assets/burger.png");
-    chaserTexture.loadFromFile("assets/pepper.png");
-    patrollingTexture.loadFromFile("assets/salad.png");
+    playerTexture.loadFromFile("assets/player.png");
+    chaserTexture.loadFromFile("assets/chaser.png");
+    patrollingTexture.loadFromFile("assets/patrolling.png");
 }
 
 void Game::run() {
