@@ -45,9 +45,13 @@ void Game::pollEvent() {
 
 void Game::updateAll() {
     if (playing) {
+        //std::cout << player.speedX << " - " << player.speedY << "               " << player.potionTimer << std::endl;
         player.update(deltaTime);
         player.handleInput(deltaTime, window);
+        player.potionTimer += deltaTime;
+        player.potionUpdate(deltaTime);
 
+        //COLLISIONS
         if (!enemies.empty()) {
             for (auto& enemy : enemies) {
                 enemy->update(deltaTime);
@@ -58,16 +62,36 @@ void Game::updateAll() {
                 }
             }
         }
+        if (!objects.empty()) {
+            for (auto& obj : objects) {
+                if (player.sprite.getGlobalBounds().intersects(obj->sprite.getGlobalBounds())) {
+                    obj->interact(player);
+                }
+            }
+        }
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects[i]->state == false) {
+                objects.erase(objects.begin() + i);
+            }
+        }
     }
 }
 
 void Game::drawAll() {
     if (playing) {
         player.sprite.setTexture(playerTexture);
+        keyIcone.setTexture(keyTexture);
+        /*if (player.key)*/ window.draw(keyIcone);
         if (!enemies.empty()) {
             for (auto& enemy : enemies) {
                 if (enemy->type == "chaser") enemy->sprite.setTexture(chaserTexture);
                 else if (enemy->type == "patrolling") enemy->sprite.setTexture(patrollingTexture);
+            }
+        }
+        if (!objects.empty()) {
+            for (auto& obj : objects) {
+                if (obj->type == "potion") obj->sprite.setTexture(potionTexture);
+                else if (obj->type == "key") obj->sprite.setTexture(keyTexture);
             }
         }
 
@@ -76,6 +100,11 @@ void Game::drawAll() {
         if (!enemies.empty()) {
             for (auto& enemy : enemies) {
                 enemy->draw(window);
+            }
+        }
+        if (!objects.empty()) {
+            for (auto& obj : objects) {
+                window.draw(obj->sprite);
             }
         }
     }
@@ -91,6 +120,9 @@ void Game::loadTextures() {
     playerTexture.loadFromFile("assets/player.png");
     chaserTexture.loadFromFile("assets/chaser.png");
     patrollingTexture.loadFromFile("assets/patrolling.png");
+    potionTexture.loadFromFile("assets/potion.png");
+    keyTexture.loadFromFile("assets/key.png");
+
     baseFont.loadFromFile("assets/Arial.ttf");
 
     gameOverText.setFont(baseFont);
@@ -107,6 +139,10 @@ void Game::loadTextures() {
         gameOverText.getPosition().y + gameOverText.getCharacterSize() + window.getSize().y * 0.1);
     retryText.setFillColor(sf::Color::White);
 
+    keyIcone.setTexture(keyTexture);
+    keyIcone.setScale(0.1, 0.1);
+    keyIcone.setPosition(50, 50);
+
 }
 
 void Game::setupSpawns() {
@@ -116,11 +152,20 @@ void Game::setupSpawns() {
     //std::unique_ptr<PatrollingEnemy> patrolling = std::make_unique<PatrollingEnemy>(700, 700);
     //patrollings.push_back(patrolling);
     enemies.emplace_back(std::make_unique<PatrollingEnemy>(700, 700));
+
+    objects.emplace_back(std::make_unique<Potion>());
+    objects.emplace_back(std::make_unique<Key>());
+    for (auto& obj : objects) {
+        obj->sprite.setPosition(rand() % window.getSize().x * 0.95, rand() % window.getSize().y * 0.95);
+    }
 }
 
 void Game::reset() {
     enemies.clear();
+    objects.clear();
     player.sprite.setPosition(600, 400);
+    player.potion = false;
+    player.key = false;
     setupSpawns();
 }
 

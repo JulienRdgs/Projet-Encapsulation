@@ -19,12 +19,16 @@ C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Pr
 C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(38,75): warning C4244:         [
 C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(38,75): warning C4244:             T=float
 C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(38,75): warning C4244:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(144,64): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(144,64): warning C4244:         with
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(144,64): warning C4244:         [
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(144,64): warning C4244:             T=unsigned int
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(144,64): warning C4244:         ]
-C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(151,72): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(132,64): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(132,64): warning C4244:         with
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(132,64): warning C4244:         [
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(132,64): warning C4244:             T=unsigned int
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(132,64): warning C4244:         ]
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(139,72): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(143,28): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(143,23): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(159,97): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(159,61): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244: 'argument' : conversion de '_Ty' en 'float', perte possible de données
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         with
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         [
@@ -33,12 +37,12 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.3443
   (compiler le fichier source 'game.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56):
       le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(159,31):
+          C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(151,31):
           voir la référence à l'instanciation de la fonction modèle 'std::unique_ptr<ChaserEnemy,std::default_delete<ChaserEnemy>> std::make_unique<ChaserEnemy,int,int,0>(int &&,int &&)' en cours de compilation
   
   Génération de code en cours
-  2 of 251 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+  4 of 354 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
   Projet Encap.vcxproj -> C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\x64\Release\Projet Encap.exe

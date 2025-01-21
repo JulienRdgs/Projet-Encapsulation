@@ -6,8 +6,8 @@ Player::Player(float xPos, float yPos) {
     sprite.setPosition({ xPos, yPos });
     posX = xPos;
     posY = yPos;
-    speedX = 500;
-    speedY = 500;
+    speedX = baseSpeed;
+    speedY = baseSpeed;
 }
 void Player::update(float deltaTime) {
     posX = sprite.getPosition().x;
@@ -43,5 +43,19 @@ void Player::handleInput(float deltaTime, sf::RenderWindow& window) {
     if (sprite.getPosition().x + sprite.getLocalBounds().width * sprite.getScale().x > window.getSize().x) {
         sprite.setPosition(window.getSize().x - sprite.getLocalBounds().height * sprite.getScale().y, sprite.getPosition().y);
     }
+}
 
+void Player::potionUpdate(float deltaTime) {
+    if (potion) {
+        sprite.setColor(sf::Color(24, 202, 237));
+        speedX = baseSpeed * 1.5;
+        speedY = baseSpeed * 1.5;
+        if (potionTimer >= 5) potion = false;
+    }
+    else {
+        sprite.setColor(sf::Color::White);
+        potionTimer = 0;
+        speedX = baseSpeed;
+        speedY = baseSpeed;
+    }
 }
