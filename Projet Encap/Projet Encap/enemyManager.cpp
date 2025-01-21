@@ -1,6 +1,6 @@
 #include "enemyManager.h"
 
-
+//USELESS
 void EnemyManager::createEnemy(std::string type, float xPos, float yPos) {
     if (type == "chaser") {
         std::unique_ptr<Enemy> enemy = std::make_unique<ChaserEnemy>(100, 100);

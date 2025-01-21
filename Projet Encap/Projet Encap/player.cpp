@@ -18,16 +18,16 @@ void Player::draw(sf::RenderWindow& window) {
 }
 void Player::handleInput(float deltaTime, sf::RenderWindow& window) {
     //MOUVEMENTS
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
         sprite.move(0, speedY * deltaTime);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
         sprite.move(0, -speedY * deltaTime);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
         sprite.move(-speedX * deltaTime, 0);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         sprite.move(speedX * deltaTime, 0);
     }
     //LIMITES

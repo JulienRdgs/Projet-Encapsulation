@@ -1,13 +1,14 @@
 #include "patrolling.h"
 
 PatrollingEnemy::PatrollingEnemy(float xPos, float yPos) {
+    type = "patrolling";
     sprite.setScale(0.1, 0.1);
     sprite.setPosition({ xPos, yPos });
     posX = xPos;
     posY = yPos;
 }
 
-void PatrollingEnemy::patroll(float& deltaTime, sf::RenderWindow& window) {
+void PatrollingEnemy::behavior(float& deltaTime, sf::RenderWindow& window, Player& player) {
     sprite.move(speedX * deltaTime, speedY * deltaTime);
 
     if (sprite.getPosition().y + sprite.getLocalBounds().height * sprite.getScale().y > window.getSize().y || sprite.getPosition().y < 0) {

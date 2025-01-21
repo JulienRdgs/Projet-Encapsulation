@@ -13,3 +13,5 @@ void Enemy::update(float deltaTime) {
 void Enemy::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 }
+
+void Enemy::behavior(float& deltaTime, sf::RenderWindow& window, Player& player) {}
