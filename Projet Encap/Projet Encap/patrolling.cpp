@@ -8,13 +8,17 @@ PatrollingEnemy::PatrollingEnemy(float xPos, float yPos) {
     posY = yPos;
 }
 
-void PatrollingEnemy::behavior(float& deltaTime, sf::RenderWindow& window, Player& player) {
+void PatrollingEnemy::behavior(float& deltaTime, sf::Sprite wall, Player& player) {
     sprite.move(speedX * deltaTime, speedY * deltaTime);
 
-    if (sprite.getPosition().y + sprite.getLocalBounds().height * sprite.getScale().y > window.getSize().y || sprite.getPosition().y < 0) {
+    /*if (sprite.getPosition().y + sprite.getLocalBounds().height * sprite.getScale().y > window.getSize().y || sprite.getPosition().y < 0) {
         speedY = -speedY;
     }
     if (sprite.getPosition().x + sprite.getLocalBounds().width * sprite.getScale().x > window.getSize().x || sprite.getPosition().x < 0) {
+        speedX = -speedX;
+    }*/
+    if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
+        speedY = -speedY;
         speedX = -speedX;
     }
 }

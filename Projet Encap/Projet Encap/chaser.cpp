@@ -8,7 +8,7 @@ ChaserEnemy::ChaserEnemy(float xPos, float yPos) {
 	posY = yPos;
 }
 
-void ChaserEnemy::behavior(float& deltaTime, sf::RenderWindow& window, Player& player) {
+void ChaserEnemy::behavior(float& deltaTime, sf::Sprite wall, Player& player) {
 	playerPosX = player.sprite.getPosition().x + (player.sprite.getLocalBounds().width * player.sprite.getScale().x 
 		+ player.sprite.getLocalBounds().height * player.sprite.getScale().y 
 		- sprite.getLocalBounds().width * sprite.getScale().x 

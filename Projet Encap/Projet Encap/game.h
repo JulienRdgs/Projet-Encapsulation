@@ -4,16 +4,16 @@
 #include "player.h"
 #include "chaser.h"
 #include "patrolling.h"
-//#include "enemyManager.h"
 #include "potion.h"
 #include "key.h"
+#include "map.h"
 
 
 class Game {
 public:
 	sf::RenderWindow window;
 	Player player;
-	//EnemyManager enemyManager; //USELESS
+	Map theMap;
 	std::vector<std::unique_ptr<Enemy>> enemies;
 	std::vector<std::unique_ptr<Interactable>> objects;
 	sf::Clock Clock;
@@ -26,7 +26,12 @@ public:
 	sf::Texture patrollingTexture;
 	sf::Texture potionTexture;
 	sf::Texture keyTexture;
+	sf::Texture wallTexture;
+	sf::Texture paveTexture;
+
 	sf::Sprite keyIcone;
+	sf::Sprite wallSprite;
+	sf::Sprite paveSprite;
 
 	sf::Font baseFont;
 	sf::Text gameOverText;

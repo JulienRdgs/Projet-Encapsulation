@@ -12,5 +12,5 @@ public:
 
 	ChaserEnemy(float xPos, float yPos);
 
-	void behavior(float& deltaTime, sf::RenderWindow& window, Player& player) override;
+	void behavior(float& deltaTime, sf::Sprite wall, Player& player) override;
 };

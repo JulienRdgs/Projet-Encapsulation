@@ -12,5 +12,5 @@ public:
 	void update(float deltaTime) override;
 	void draw(sf::RenderWindow& window) override;
 
-	virtual void behavior(float& deltaTime, sf::RenderWindow& window, Player& player);
+	virtual void behavior(float& deltaTime, sf::Sprite wall, Player& player);
 };

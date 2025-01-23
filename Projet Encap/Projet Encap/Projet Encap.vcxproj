@@ -139,12 +139,12 @@
   <ItemGroup>
     <ClCompile Include="chaser.cpp" />
     <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="enemyManager.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="interactable.cpp" />
     <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="patrolling.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="potion.cpp" />
@@ -152,12 +152,12 @@
   <ItemGroup>
     <ClInclude Include="chaser.h" />
     <ClInclude Include="enemy.h" />
-    <ClInclude Include="enemyManager.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="interactable.h" />
     <ClInclude Include="key.h" />
+    <ClInclude Include="map.h" />
     <ClInclude Include="patrolling.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="potion.h" />
