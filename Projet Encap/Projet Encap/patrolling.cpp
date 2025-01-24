@@ -6,19 +6,34 @@ PatrollingEnemy::PatrollingEnemy(float xPos, float yPos) {
     sprite.setPosition({ xPos, yPos });
     posX = xPos;
     posY = yPos;
+    /*speedX = 100;
+    speedY = 100;*/
+    speedX = randomSpeed[rand() % 6];
+    speedY = randomSpeed[rand() % 6];
 }
 
-void PatrollingEnemy::behavior(float& deltaTime, sf::Sprite wall, Player& player) {
+void PatrollingEnemy::behavior(float& deltaTime, sf::Sprite& daWall, std::vector<std::vector<std::unique_ptr<MapEntities>>>& walls, Player& player) {
     sprite.move(speedX * deltaTime, speedY * deltaTime);
 
-    /*if (sprite.getPosition().y + sprite.getLocalBounds().height * sprite.getScale().y > window.getSize().y || sprite.getPosition().y < 0) {
-        speedY = -speedY;
+    for (auto& wallz : walls) {
+        for (auto& wall : wallz){
+            if (wall->type == "wall") {
+                if (sprite.getGlobalBounds().intersects(wall->sprite.getGlobalBounds())) {
+                    touchedWall = true;
+                }
+            }
+        }
     }
-    if (sprite.getPosition().x + sprite.getLocalBounds().width * sprite.getScale().x > window.getSize().x || sprite.getPosition().x < 0) {
+    if (touchedWall) {
+        /*speedY = changeY[rand() % 2];
+        speedX = changeX[rand() % 2];*/
+        speedY = -speedY;
+        speedX = -speedX;
+    }
+    touchedWall = false;
+
+    /*if (sprite.getGlobalBounds().intersects(daWall.getGlobalBounds())) {
+        speedY = -speedY;
         speedX = -speedX;
     }*/
-    if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
-        speedY = -speedY;
-        speedX = -speedX;
-    }
 }

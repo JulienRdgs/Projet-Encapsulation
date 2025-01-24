@@ -1,9 +1,9 @@
 #include "player.h"
 #include "game.h"
-#include "map.h"
+#include "mapEntities.h"
 
 Player::Player(float xPos, float yPos) {
-    sprite.setScale(0.1f, 0.1f);
+    sprite.setScale(0.09f, 0.09f);
     sprite.setPosition({ xPos, yPos });
     posX = xPos;
     posY = yPos;
@@ -17,65 +17,75 @@ void Player::update(float deltaTime) {
 void Player::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 }
-void Player::handleInput(float deltaTime, sf::RenderWindow& window, sf::Sprite wall) {
+void Player::handleInput(float deltaTime, sf::RenderWindow& window, sf::Sprite wall, std::vector<std::vector<std::unique_ptr<MapEntities>>>& walls) {
     //MOUVEMENTS
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
         sprite.move(0, speedY * deltaTime);
-        if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
-            sprite.setPosition(sprite.getPosition().x, sprite.getPosition().y - 1);
+        /*if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
+            sprite.move(0, -speedY * deltaTime);
+        }*/
+        for (auto& wallz : walls) {
+            for (auto& wall : wallz) {
+                if (wall->type == "wall" || (wall->type == "lock" && !key)) {
+                    if (sprite.getGlobalBounds().intersects(wall->sprite.getGlobalBounds())) {
+                        sprite.move(0, -speedY * deltaTime);
+                    }
+                }
+            }
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
         sprite.move(0, -speedY * deltaTime);
-        if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
-            sprite.setPosition(sprite.getPosition().x, sprite.getPosition().y + 50 + 1);
+        /*if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
+            sprite.move(0, speedY * deltaTime);
+        }*/
+        for (auto& wallz : walls) {
+            for (auto& wall : wallz) {
+                if (wall->type == "wall" || (wall->type == "lock" && !key)) {
+                    if (sprite.getGlobalBounds().intersects(wall->sprite.getGlobalBounds())) {
+                        sprite.move(0, speedY * deltaTime);
+                    }
+                }
+            }
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
         sprite.move(-speedX * deltaTime, 0);
-        if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
-            sprite.setPosition(sprite.getPosition().y + 50 + 1, sprite.getPosition().y);
+        /*if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
+            sprite.move(speedX * deltaTime, 0);
+        }*/
+        for (auto& wallz : walls) {
+            for (auto& wall : wallz) {
+                if (wall->type == "wall" || (wall->type == "lock" && !key)) {
+                    if (sprite.getGlobalBounds().intersects(wall->sprite.getGlobalBounds())) {
+                        sprite.move(speedX * deltaTime, 0);
+                    }
+                }
+            }
         }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         sprite.move(speedX * deltaTime, 0);
-        if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
-            sprite.setPosition(sprite.getPosition().y - sprite.getGlobalBounds().width * sprite.getScale().x - 1, sprite.getPosition().y);
+        /*if (sprite.getGlobalBounds().intersects(wall.getGlobalBounds())) {
+            sprite.move(-speedX * deltaTime, 0);
+        }*/
+        for (auto& wallz : walls) {
+            for (auto& wall : wallz) {
+                if (wall->type == "wall" || (wall->type == "lock" && !key)) {
+                    if (sprite.getGlobalBounds().intersects(wall->sprite.getGlobalBounds())) {
+                        sprite.move(-speedX * deltaTime, 0);
+                    }
+                }
+            }
         }
     }
-    //LIMITES
-    if (sprite.getPosition().y + sprite.getLocalBounds().height * sprite.getScale().y  > window.getSize().y) {
-        sprite.setPosition(sprite.getPosition().x, window.getSize().y - sprite.getLocalBounds().height * sprite.getScale().y);
-    }
-    if (sprite.getPosition().y < 0) {
-        sprite.setPosition(sprite.getPosition().x, 0);
-    }
-    if (sprite.getPosition().x < 0) {
-        sprite.setPosition(0, sprite.getPosition().y);
-    }
-    if (sprite.getPosition().x + sprite.getLocalBounds().width * sprite.getScale().x > window.getSize().x) {
-        sprite.setPosition(window.getSize().x - sprite.getLocalBounds().height * sprite.getScale().y, sprite.getPosition().y);
-    }
-    ///////////////////////////
-    /*if (sprite.getPosition().y + sprite.getLocalBounds().height * sprite.getScale().y > window.getSize().y) {
-        sprite.setPosition(sprite.getPosition().x, window.getSize().y - sprite.getLocalBounds().height * sprite.getScale().y);
-    }
-    if (sprite.getPosition().y < 0) {
-        sprite.setPosition(sprite.getPosition().x, 0);
-    }
-    if (sprite.getPosition().x < 0) {
-        sprite.setPosition(0, sprite.getPosition().y);
-    }
-    if (sprite.getPosition().x + sprite.getLocalBounds().width * sprite.getScale().x > window.getSize().x) {
-        sprite.setPosition(window.getSize().x - sprite.getLocalBounds().height * sprite.getScale().y, sprite.getPosition().y);
-    }*/
 }
 
 void Player::potionUpdate(float deltaTime) {
     if (potion) {
         sprite.setColor(sf::Color(24, 202, 237));
-        speedX = baseSpeed * 1.5f;
-        speedY = baseSpeed * 1.5f;
+        speedX = baseSpeed * 1.75f;
+        speedY = baseSpeed * 1.75f;
         if (potionTimer >= 5) potion = false;
     }
     else {

@@ -1,6 +1,40 @@
-﻿  player.cpp
+﻿  enemy.cpp
+  game.cpp
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(164,59): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(164,59): warning C4244:         with
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(164,59): warning C4244:         [
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(164,59): warning C4244:             T=unsigned int
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(164,59): warning C4244:         ]
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(171,64): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(171,64): warning C4244:         with
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(171,64): warning C4244:         [
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(171,64): warning C4244:             T=unsigned int
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(171,64): warning C4244:         ]
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(178,72): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(182,30): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(182,23): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(202,96): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(202,61): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244: 'argument' : conversion de '_Ty' en 'float', perte possible de données
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         ]
+  (compiler le fichier source 'game.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\game.cpp(192,31):
+          voir la référence à l'instanciation de la fonction modèle 'std::unique_ptr<ChaserEnemy,std::default_delete<ChaserEnemy>> std::make_unique<ChaserEnemy,int,int,0>(int &&,int &&)' en cours de compilation
+  
+  main.cpp
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\main.cpp(4,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  map.cpp
+  patrolling.cpp
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\patrolling.cpp(5,26): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\jrodrigues\source\repos\JulienRdgs\Projet-Encapsulation\Projet Encap\Projet Encap\patrolling.cpp(5,21): warning C4305: 'argument' : troncation de 'double' à 'float'
+  player.cpp
   Génération de code en cours
-  2 of 464 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 634 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code

@@ -7,8 +7,8 @@ public:
 	sf::Sprite sprite;
 	float posX = 0;
 	float posY = 0;
-	float speedX = 100;
-	float speedY = 100;
+	float speedX = 0;
+	float speedY = 0;
 	
 	Entity();
 	virtual void update(float deltaTime) = 0;

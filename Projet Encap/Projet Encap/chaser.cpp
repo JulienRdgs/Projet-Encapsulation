@@ -6,9 +6,11 @@ ChaserEnemy::ChaserEnemy(float xPos, float yPos) {
 	sprite.setPosition({ xPos, yPos });
 	posX = xPos;
 	posY = yPos;
+	speedX = 100;
+	speedY = 100;
 }
 
-void ChaserEnemy::behavior(float& deltaTime, sf::Sprite wall, Player& player) {
+void ChaserEnemy::behavior(float& deltaTime, sf::Sprite& daWall, std::vector<std::vector<std::unique_ptr<MapEntities>>>& walls, Player& player) {
 	playerPosX = player.sprite.getPosition().x + (player.sprite.getLocalBounds().width * player.sprite.getScale().x 
 		+ player.sprite.getLocalBounds().height * player.sprite.getScale().y 
 		- sprite.getLocalBounds().width * sprite.getScale().x 

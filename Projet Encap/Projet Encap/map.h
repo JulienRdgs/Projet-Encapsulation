@@ -1,16 +1,19 @@
 #pragma once
 
-#include "includes.h"
+#include "mapEntities.h"
+#include "enemy.h"
+#include "interactable.h"
 
 class Map {
 public:
 	std::ifstream mapFile;
-	std::vector<std::vector<std::unique_ptr<sf::Sprite>>> walls;
-	std::vector<std::unique_ptr<sf::Sprite>> paves;
+	std::vector<std::vector<std::unique_ptr<MapEntities>>> mapObjects;
+	std::vector<std::vector<std::unique_ptr<Enemy>>> enemies;
+	std::vector<std::vector<std::unique_ptr<Interactable>>> objects;
+	
 	std::string line;
 
 	Map();
 
 	void loadMap();
-	//void drawWall(sf::RenderWindow& window);
 };

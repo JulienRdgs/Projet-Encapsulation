@@ -4,6 +4,8 @@
 
 class Interactable {
 public:
+	float posX;
+	float posY;
 	bool state = true;
 	std::string type;
 	sf::Sprite sprite;

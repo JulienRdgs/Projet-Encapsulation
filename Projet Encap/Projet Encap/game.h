@@ -19,6 +19,7 @@ public:
 	sf::Clock Clock;
 	float deltaTime = 0;
 	bool playing = true;
+	bool win = false;
 	bool gameOver = false;
 
 	sf::Texture playerTexture;
@@ -27,13 +28,16 @@ public:
 	sf::Texture potionTexture;
 	sf::Texture keyTexture;
 	sf::Texture wallTexture;
-	sf::Texture paveTexture;
+	sf::Texture floorTexture;
+	sf::Texture lockTexture;
 
 	sf::Sprite keyIcone;
 	sf::Sprite wallSprite;
-	sf::Sprite paveSprite;
+	sf::Sprite floorSprite;
+	sf::Sprite lockSprite;
 
 	sf::Font baseFont;
+	sf::Text winText;
 	sf::Text gameOverText;
 	sf::Text retryText;
 

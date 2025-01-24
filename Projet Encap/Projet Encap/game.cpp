@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game() : window(sf::VideoMode(1200, 800), "Escape the Dungeon"), player(600, 400) {
+Game::Game() : window(sf::VideoMode(1200, 800), "Escape the Dungeon"), player(75, 75) {
 }
 
 void Game::gameLoop() {
@@ -19,14 +19,15 @@ void Game::pollEvent() {
             window.close();
         if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::Escape) {
-                if (gameOver) window.close();
+                /*if (gameOver) */window.close();
             }
         }
         if (event.type == sf::Event::MouseButtonPressed) {
             if (event.mouseButton.button == sf::Mouse::Left) {
-                if (gameOver) {
+                if (gameOver || win) {
                     if (retryText.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) {
                         reset();
+                        win = false;
                         gameOver = false;
                         playing = true;
                     }
@@ -47,7 +48,7 @@ void Game::updateAll() {
     if (playing) {
         //std::cout << player.speedX << " - " << player.speedY << "               " << player.potionTimer << std::endl;
         player.update(deltaTime);
-        player.handleInput(deltaTime, window, wallSprite);
+        player.handleInput(deltaTime, window, wallSprite, theMap.mapObjects);
         player.potionTimer += deltaTime;
         player.potionUpdate(deltaTime);
 
@@ -55,10 +56,10 @@ void Game::updateAll() {
         if (!enemies.empty()) {
             for (auto& enemy : enemies) {
                 enemy->update(deltaTime);
-                enemy->behavior(deltaTime, wallSprite, player);
+                enemy->behavior(deltaTime, wallSprite, theMap.mapObjects, player);
                 if (player.sprite.getGlobalBounds().intersects(enemy->sprite.getGlobalBounds())) {
-                    /*playing = false;
-                    gameOver = true;*/
+                    playing = false;
+                    gameOver = true;
                 }
             }
         }
@@ -74,21 +75,54 @@ void Game::updateAll() {
                 objects.erase(objects.begin() + i);
             }
         }
+        for (auto& wallz : theMap.mapObjects) {
+            for (auto& wall : wallz) {
+                wallSprite.setPosition(wall->sprite.getPosition());
+            }
+        }
+
+        if (player.sprite.getPosition().x > window.getSize().x || player.sprite.getPosition().y > window.getSize().y
+            || player.sprite.getPosition().x < 0 || player.sprite.getPosition().y < 0) {
+            win = true;
+            playing = false;
+        }
     }
 }
 
 void Game::drawAll() {
     window.clear();
     if (playing) {
+        if (!theMap.mapObjects.empty()) {
+            for (auto& objz : theMap.mapObjects) {
+                for (auto& obj : objz) {
+                    /*if (obj->type == "wall") {
+                        wallSprite.setScale(obj->sprite.getScale());
+                        wallSprite.setPosition(obj->sprite.getPosition());
+                        window.draw(wallSprite);
+                    }
+                    else if (obj->type == "floor") {
+                        floorSprite.setScale(obj->sprite.getScale());
+                        floorSprite.setPosition(obj->sprite.getPosition());
+                        window.draw(floorSprite);
+                    }*/
+                    if (obj->type == "wall") {
+                        obj->sprite.setTexture(wallTexture);
+                    }
+                    else if (obj->type == "floor") obj->sprite.setTexture(floorTexture);
+                    else if (obj->type == "lock") obj->sprite.setTexture(lockTexture);
+                    window.draw(obj->sprite);
+                }
+            }
+        }
         player.sprite.setTexture(playerTexture);
         keyIcone.setTexture(keyTexture);
         if (player.key) window.draw(keyIcone);
         player.draw(window);
         if (!enemies.empty()) {
             for (auto& enemy : enemies) {
-                if (enemy->type == "chaser") enemy->sprite.setTexture(chaserTexture);
-                else if (enemy->type == "patrolling") enemy->sprite.setTexture(patrollingTexture);
-                enemy->draw(window);
+                    if (enemy->type == "chaser") enemy->sprite.setTexture(chaserTexture);
+                    else if (enemy->type == "patrolling") enemy->sprite.setTexture(patrollingTexture);
+                    enemy->draw(window);
             }
         }
         if (!objects.empty()) {
@@ -98,25 +132,10 @@ void Game::drawAll() {
                 window.draw(obj->sprite);
             }
         }
-        /*if (!theMap.walls.empty()) {
-            for (auto& wallz : theMap.walls) {
-                for (auto& wall : wallz) {
-                    wallSprite.setScale(wall->getScale());
-                    wallSprite.setPosition(wall->getPosition());
-                    window.draw(wallSprite);
-                }
-            }
-        }*/
-        wallSprite.setPosition(650, 650);
-        wallSprite.setScale(0.1f, 0.1f);
-        window.draw(wallSprite);
-        if (!theMap.paves.empty()) {
-            for (auto& pave : theMap.paves) {
-                paveSprite.setScale(pave->getScale());
-                paveSprite.setPosition(pave->getPosition());
-                window.draw(paveSprite);
-            }
-        }
+    }
+    if (win) {
+        window.draw(winText);
+        window.draw(retryText);
     }
     if (gameOver) {
         window.draw(gameOverText);
@@ -133,9 +152,17 @@ void Game::loadTextures() {
     potionTexture.loadFromFile("assets/potion.png");
     keyTexture.loadFromFile("assets/key.png");
     wallTexture.loadFromFile("assets/wall.png");
-    paveTexture.loadFromFile("assets/pave.png");
+    floorTexture.loadFromFile("assets/floor.png");
+    lockTexture.loadFromFile("assets/lock.png");
 
     baseFont.loadFromFile("assets/Arial.ttf");
+
+    winText.setFont(baseFont);
+    winText.setString("WIN");
+    winText.setCharacterSize(100);
+    winText.setPosition((window.getSize().x - winText.getGlobalBounds().width) / 2,
+        (window.getSize().y - winText.getCharacterSize()) / 3);
+    winText.setFillColor(sf::Color::Yellow);
 
     gameOverText.setFont(baseFont);
     gameOverText.setString("GAME OVER");
@@ -155,38 +182,32 @@ void Game::loadTextures() {
     keyIcone.setScale(0.075, 0.075);
     keyIcone.setPosition(0, 0);
     wallSprite.setTexture(wallTexture);
-    paveSprite.setTexture(paveTexture);
-    for (auto& wallz : theMap.walls) {
-        for (auto& wall : wallz) {
-            wall->setTexture(wallTexture);
-            wall->setScale(0.1f, 0.1f);
-        }
-    }
-    for (auto& pave : theMap.paves) {
-        pave->setTexture(paveTexture);
-        pave->setScale(0.1f, 0.1f);
-    }
+    floorSprite.setTexture(floorTexture);
+    lockSprite.setTexture(lockTexture);
 }
 
 void Game::setupSpawns() {
     //std::unique_ptr<Enemy> chaser = std::make_unique<ChaserEnemy>(100, 100);
     //enemies.push_back(chaser);
-    enemies.emplace_back(std::make_unique<ChaserEnemy>(100, 100));
+    enemies.emplace_back(std::make_unique<ChaserEnemy>(700, 700));
     //std::unique_ptr<PatrollingEnemy> patrolling = std::make_unique<PatrollingEnemy>(700, 700);
     //patrollings.push_back(patrolling);
     enemies.emplace_back(std::make_unique<PatrollingEnemy>(500, 500));
+    enemies.emplace_back(std::make_unique<PatrollingEnemy>(300, 300));
+    enemies.emplace_back(std::make_unique<PatrollingEnemy>(900, 200));
 
     objects.emplace_back(std::make_unique<Potion>());
     objects.emplace_back(std::make_unique<Key>());
     for (auto& obj : objects) {
-        obj->sprite.setPosition(rand() % window.getSize().x * 0.95, rand() % window.getSize().y * 0.95);
+        obj->sprite.setPosition(rand() % window.getSize().x * 0.9, rand() % window.getSize().y * 0.9);
     }
 }
 
 void Game::reset() {
     enemies.clear();
+    //theMap.enemies.clear();
     objects.clear();
-    player.sprite.setPosition(600, 400);
+    player.sprite.setPosition(75, 75);
     player.potion = false;
     player.key = false;
     setupSpawns();
